@@ -1,0 +1,42 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+//This MAX with nothing real inside the loop ran in 0.5 seconds...
+const int MAX = 100000000; //setting the max stopping point 100M for testing
+
+int main () {
+  clock_t startTime = clock();
+  cout << "Beginning loop" << endl;
+  int k;
+  int j;
+  for (int i = 3; i < MAX; i++) {
+    //this is where your algorithm code would go
+    int k = i;
+    while(k!=1)
+    {
+      if (k%2==0)
+      {
+        k/=2;
+      }
+      else
+      {
+        if (k>100000)
+        {
+          k=static_cast<float>(k*3+1);
+        }
+        else
+        {
+          k=3*k+1;
+        }
+      }
+    }
+    j=i;
+  }
+  cout << j <<endl;
+  clock_t finishTime = clock();
+  cout << "Looping took " << double(finishTime - startTime) / CLOCKS_PER_SEC << " seconds" << endl;
+
+  return 0;
+}
